@@ -8,12 +8,12 @@ jobs:
           username: mydockerhub-user
           aws_region: $AWS_REGION 
     steps:
-      - run: echo $AWS_REGION
+      - run: echo "hello world"
   deploy:
     docker:
       - image: amazon/aws-cli
     steps:
-      - run: echo $AWS_REGION
+      - run: echo $username
 
 workflows:
   version: 2
