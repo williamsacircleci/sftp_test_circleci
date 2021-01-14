@@ -4,7 +4,9 @@ jobs:
       image: ubuntu-2004:202010-01
     steps:
       - checkout
-      - run:
+      - run: |
+          export AWS_ACCESS_KEY_ID=<< parameters.aws_access_key_id >>
+          export AWS_SECRET_ACCESS_KEY=<< parameters.aws_secret_key >>
           name: Installing AWS CLI
           command: |
             sudo apt-get update
