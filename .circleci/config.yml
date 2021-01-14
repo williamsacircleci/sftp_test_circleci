@@ -4,6 +4,9 @@ jobs:
   build:
     docker:
       - image: circleci/python:latest
+        auth:
+          username: mydockerhub-user
+          aws_region: $AWS_REGION 
     steps:
       - run: echo $AWS_REGION
   deploy:
