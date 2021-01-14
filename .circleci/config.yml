@@ -14,7 +14,7 @@ jobs:
             sudo apt-get update
             sudo apt install python3-pip
             sudo pip3 install awsebcli --upgrade
-      - run: aws s3 ls
+      - run: echo $AWS_ACCESS_KEY
 
 workflows:
   version: 2
