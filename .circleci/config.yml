@@ -5,12 +5,12 @@ jobs:
     docker:
       - image: circleci/python:latest
     steps:
-      - run: echo "build"
+      - run: echo $AWS_REGION
   deploy:
     docker:
       - image: circleci/python:latest
     steps:
-      - run: echo "deploy"
+      - run: echo $AWS_REGION
 
 workflows:
   version: 2
