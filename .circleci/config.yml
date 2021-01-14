@@ -1,7 +1,7 @@
 jobs:
   build_deploy:
     docker:
-      - image: ubuntu-2004:202010-01
+      - image: amazon/aws-cli:2.0.6
         auth: 
           AWS_ACCESS_KEY: $AWS_ACCESS_KEY
           AWS_REGION: $AWS_REGION
