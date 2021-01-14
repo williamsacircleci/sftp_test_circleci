@@ -1,7 +1,11 @@
 jobs:
   build_deploy:
-    machine:
-      image: ubuntu-2004:202010-01
+    docker:
+      - image: ubuntu-2004:202010-01
+        auth: 
+          AWS_ACCESS_KEY: $AWS_ACCESS_KEY
+          AWS_REGION: $AWS_REGION
+          AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
     steps:
       - checkout
       - run:
