@@ -1,19 +1,33 @@
 version: 2
 
+executor-auth-aws: &executor-auth-aws
+  aws_auth:
+    aws_access_key_id: $AWS_ACCESS_KEY_ID
+    aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
+
+commands:
+  aws_creds:
+    steps:
+      - run:
+          name: "aws credentials"
+          command: |
+            export AWS_ACCESS_KEY_ID=<< parameters.aws_access_key_id >>
+            export AWS_SECRET_ACCESS_KEY=<< parameters.aws_secret_key >>
+            echo "export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" >> $BASH_ENV
+            echo "export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" >> $BASH_ENV
+            source $BASH_ENV
+
 jobs:
   build:
     docker:
       - image: amazon/aws-cli
-        auth:
-          username: mydockerhub-user
-          aws_region: $AWS_REGION 
     steps:
       - run: echo "hello world"
   deploy:
     docker:
       - image: amazon/aws-cli
     steps:
-      - run: echo $username
+      - run: aws s3 cli
 
 workflows:
   version: 2
