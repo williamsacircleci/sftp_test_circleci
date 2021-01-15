@@ -27,7 +27,7 @@ jobs:
     docker:
       - image: amazon/aws-cli
     steps:
-      - run: aws s3 cli
+      - run: aws s3 ls
 
 workflows:
   version: 2
